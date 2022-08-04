@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html style="display:table;margin:auto;">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Macquarie</title>
+        <style type='text/css'>       
+            .ReadMsgBody {width: 100%; background-color: #ffffff;} /*for outlook*/
+            .ExternalClass {width: 100%; background-color: #ffffff;} /*for outlook*/
+            div, p, a, td { -webkit-text-size-adjust: none; }
+            .section-content-title, .section-content {}
+            .support, .resistance {}
+            .td-code, .td-name, .td-type, .td-expiry, .td-exercisePrice {}
+            .readmore-container {}
+            .mqth-link {} /*for style revision in outlook*/
+            
+        </style>
+    </head>
+    <body style="display:table-cell;width:100%;margin:0px;padding:0px;font-family:Tahoma,Arial;">      
+        <custom name='opencounter' type='tracking'>
+           <table>
+            <tr>
+                <td style="padding:0px">&nbsp;</td>
+                <td style="width:600px;padding:0px;">
+                    <table style="width:100%;border:0px;padding:0px;border-collapse:collapse;border-spacing:0;">
+                        <tr>
+                            <td style="height:55px;width:600px;background-color:#000000;text-align:left;padding:0px 0px 0px 23px;">
+                                <img src="{cms_link}img/newsletter/macq-logo.png" alt="Macquarie Logo" style="vertical-align:middle;"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0px">
+                                <img height="290" width="600" src="{cms_link}img/newsletter/banner.png" alt="Macquarie Banner" style="vertical-align:middle;"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0px 25px;background-color:#f3f3f3;">
+                                <table style="width:100%;border:0px;padding:0px;border-collapse:collapse;border-spacing:0;">
+                                    <tr>
+                                        <td style="height:80px;text-align:center;vertical-align:top;background-color:#ffffff;padding:0px;">
+                                            <div style="margin-bottom:5px;font-size:16px;font-family:Tahoma,Arial;">Newsletter</div>
+                                            <div style="font-size:38px;font-family:Tahoma,Arial;">Singapore Warrants</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:0px">
+                                            <img height="23" src="{cms_link}img/newsletter/stripe.png" alt="stripe separator" style="vertical-align:middle;"/>
+                                        </td>
+                                    </tr>{split}
+                                    <tr id="todayhighlight_tr">
+                                        <td id="todayhighlight-section" style="padding:0px">
+                                            <table style="width:100%;border:0px;padding:0px;border-collapse:collapse;border-spacing:0;">
+                                                <thead>
+                                                    <tr>
+                                                        <td style="height:55px;font-size:22px;font-weight:300;text-align:center;color:#ffffff;background-color:#000000;border-top:2px solid #fecc0a;padding:0px;font-family:Tahoma,Arial;">Morning Market Buzz</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="font-size:20px;padding:20px;background-color:#ffffff;">
+                                                            <table style="width:100%;border:0px;padding:0px;border-collapse:collapse;border-spacing:0;">
+                                                                <tr>
+                                                                    <td colspan="2" style="padding:0px;">
+                                                                        <div class="section-content-title" style="font-weight:bold;font-family:Tahoma,Arial;font-size:21px;">{section-content-title}</div>{split}
+                                                                        <table id="highlight-table" style="width:100%;border:0px;padding:0px;border-collapse:collapse;border-spacing:0;font-size:16px;text-align:center;margin-top:20px;table-layout:auto;">
+                                                                            <thead style="background-color:#66C7EC;font-weight:500;">
+                                                                                <tr>
+                                                                                    <td style="padding:5px 0px;border-left:none;font-family:Tahoma,Arial;">Code</td>
+                                                                                    <td style="padding:5px 0px;border-left:1px solid #ffffff;font-family:Tahoma,Arial;">Name</td>
+                                                                                    <td style="padding:5px 0px;border-left:1px solid #ffffff;font-family:Tahoma,Arial;">Type</td>
+                                                                                    <td style="padding:5px 0px;border-left:1px solid #ffffff;font-family:Tahoma,Arial;">Expiry</td>
+                                                                                    <td style="padding:5px 0px;border-left:1px solid #ffffff;font-family:Tahoma,Arial;">Ex. Price</td>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody style="color: #666666;">
+                                                                                <tr>
+                                                                                    <td class="td-code" style="padding:5px 0px;border-left:none;font-family:Tahoma,Arial;"><a href="" style="color:#0675C2;text-decoration:none;" target="_blank"></a></td>
+                                                                                    <td class="td-name" style="padding:5px 0px;border-left:1px solid #ffffff;font-family:Tahoma,Arial;"></td>
+                                                                                    <td class="td-type" style="padding:5px 0px;border-left:1px solid #ffffff;font-family:Tahoma,Arial;"></td>
+                                                                                    <td class="td-expiry" style="padding:5px 0px;border-left:1px solid #ffffff;font-family:Tahoma,Arial;"></td>
+                                                                                    <td class="td-exercisePrice" style="padding:5px 0px;border-left:1px solid #ffffff;font-family:Tahoma,Arial;"></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>{split}
+                                                                        <div class="section-content" style="font-family:Tahoma,Arial;font-size:19px;">{section-content}</div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2" style="height:10px;padding:0px;">&nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="width:401px;padding:0px">&nbsp;</td>
+                                                                    <td class="readmore-container" style="width:109px;height:30px;text-align:center;background-color:#00A1E0;font-size:14px;padding:0px;">
+                                                                        <a href="{website_link}{Read_more}" style="text-decoration:none;color:#ffffff;font-family:Tahoma,Arial;" target="_blank">Read more</a>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>{split}
+                                    <tr id="option_tr">
+                                        <td style="padding:0px">
+                                            <a id="option_a" target="_blank" href="{news_link}">
+                                                <img id="option_img" width="550" height="412" src="{cms_api_link}{news_src}" alt="journey" style="vertical-align:middle;"/>
+                                            </a>
+                                        </td>
+                                    </tr>{split}
+                                    <tr>
+                                        <td style="background-color:#f3f3f3;height:20px;padding:0px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:0px">
+                                            <a id="tip_a" target="_blank" href="{img_link}">
+                                                <img id="tip_img" width="550" height="203" src="{cms_api_link}{img_src}" alt="journey" style="vertical-align:middle;"/>
+                                            </a>
+                                        </td>
+                                    </tr>{split}
+                                    <tr>
+                                        <td style="background-color:#f3f3f3;height:20px;padding:0px;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="overnightmarket-section" style="padding:0px">
+                                            <table style="width:100%;border:0px;padding:0px;border-collapse:collapse;border-spacing:0;">
+                                                <thead>
+                                                    <tr>
+                                                        <td style="height:55px;font-size:22px;font-weight:300;text-align:center;color:#ffffff;background-color:#000000;border-top:2px solid #fecc0a;padding:0px;font-family:Tahoma,Arial;">Overnight market wrap</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="font-size:20px;padding:20px;background-color:#ffffff;">
+                                                            <table style="width:100%;border:0px;padding:0px;border-collapse:collapse;border-spacing:0;">
+                                                                <tr>
+                                                                    <td colspan="2" style="padding:0px">
+                                                                        <div class="section-content-title" style="margin-bottom:10px;font-weight:bold;font-family:Tahoma,Arial;font-size:21px;">{section-content-title}</div>
+                                                                        <div class="section-content" style="font-family:Tahoma,Arial;font-size:19px;">{section-content}</div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2" style="height:10px;padding:0px;">&nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="width:401px;padding:0px">&nbsp;</td>
+                                                                    <td class="readmore-container" style="width:109px;height:30px;text-align:center;background-color:#00A1E0;font-size:14px;padding:0px;">
+                                                                        <a href="{website_link}{Read_more}" style="text-decoration:none;color:#ffffff;font-family:Tahoma,Arial;" target="_blank">Read more</a>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f3f3f3;height:20px;padding:0px;">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:0px">
+                                            <table style="width:100%;border:0px;padding:0px;border-collapse:collapse;border-spacing:0;">
+                                                <tr>
+                                                    <td style="padding:0px">
+                                                        <a class="mqth-link" style="color:#0675C2;" href="{website_link}tools/warrantsearch" target="_blank">
+                                                            <img width="174" height="174" style="vertical-align:middle;" src="{cms_link}img/newsletter/warrantSearch.png" alt="warrantSearch">
+                                                        </a>
+                                                    </td>
+                                                    <td style="padding:0px">
+                                                        <a class="mqth-link" style="color:#0675C2;" href="{website_link}edu/investormy.html" target="_blank">
+                                                            <img width="174" height="174" style="margin-left:14px;margin-right:14px;vertical-align:middle;" src="{cms_link}img/newsletter/investorAcademy.png" alt="investorAcademy">
+                                                        </a>
+                                                    </td>
+                                                    <td style="padding:0px">
+                                                        <a class="mqth-link" style="color:#0675C2;" href="{website_link}tools/livematrix" target="_blank">
+                                                            <img width="174" height="174" style="vertical-align:middle;" src="{cms_link}img/newsletter/liveMatrix.png" alt="liveMatrix">
+                                                        </a>
+                                                    </td>   
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color:#f3f3f3;height:40px;padding:0px;">&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table style="width:100%;border:0px;padding:0px;border-collapse:collapse;border-spacing:0;">
+                                    <tr>
+                                        <td style="background-color:#333333;color:#ffffff;text-align:center;padding:20px 25px;vertical-align:middle;">
+                                            <p style="margin:10px 0px 10px 0px;font-family:Tahoma,Arial;">Got a question? Contact us:</p>
+                                            <table style="width:100%;border:0px;padding:0px;border-collapse:collapse;border-spacing:0;margin:5px 0px 25px 0px;font-size:16px;text-decoration:none;">
+                                                <tr>
+                                                    <td style="padding:0px;vertical-align:middle;text-align:center;">
+                                                        <div style="vertical-align:middle;">
+                                                            <img  width="30" height="30" style="margin-right:8px;vertical-align:middle;" src="{cms_link}img/newsletter/callIcon.png" alt="callIcon">
+                                                            <a style="color:#FFD400;vertical-align:middle;font-family:Tahoma,Arial;" href="tel:+60%203-2059%208840">Hotline: +65 6601 0289</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding:0px;vertical-align:middle;text-align:center;">
+                                                        <div style="margin-top:10px;vertical-align:middle;">
+                                                            <img width="39" height="30" style="margin-right:8px;vertical-align:middle;" src="{cms_link}img/newsletter/newsletterIcon.png" alt="newsletterIcon">
+                                                            <a style="color:#FFD400;vertical-align:middle;font-family:Tahoma,Arial;" href='mailto:info@warrants.com.sg'>Email: info@warrants.com.sg</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <table style="width:100%;border:0px;padding:0px;border-collapse:collapse;border-spacing:0;text-align:center;">
+                                                <tr style="font-size:12px;">
+                                                    <td style="padding:0px">
+                                                        <a class="mqth-link" style="color:#0675C2;font-family:Tahoma,Arial;" href="{website_link}about/importantinformation">Important Information</a>
+                                                    </td>
+                                                    <td style="padding:0px 20px;color:#FFD400;">|</td>
+                                                    <td style="padding:0px">
+                                                        <a class="mqth-link" style="color:#0675C2;font-family:Tahoma,Arial;" href="{website_link}about/privacypolicy">Privacy policy</a>
+                                                    </td>
+                                                    <td style="padding:0px 20px;color:#FFD400;">|</td>
+                                                    <td style="padding:0px">
+                                                        <a class="mqth-link" style="color:#0675C2;font-family:Tahoma,Arial;" href="{website_link}marketnews/subscribe">Subscribe</a>
+                                                    </td>
+                                                    <td style="padding:0px 20px;color:#FFD400;">|</td>
+                                                    <td style="padding:0px">
+                                                        <a style="color:#0675C2;font-family:Tahoma,Arial;" href="%%subscription_center_url%%">Unsubscribe</a>
+                                                    </td>
+                                                </tr>
+                                                <tr style="font-size:14px">
+                                                    <td colspan="7" style="border-bottom: 1px solid #ffffff;padding:0px;">
+                                                        <div style="margin:10px 0px 10px 0px;text-align:center;font-family:Tahoma,Arial;">
+                                                            © Macquarie Group Limited ABN 94 122 169 279. All rights reserved.
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <p style="font-size:14px;font-family:Times New Roman;text-align:justify;">
+                                                This advertisement has not been reviewed by the Monetary Authority of Singapore.
+                                            </p>
+                                            <p style="font-size:14px;font-family:Times New Roman;text-align:justify;">
+                                                This document contains confidential information and is intended only for the named recipient. If you have received this document in error please delete it and contact Macquarie Capital Securities (Singapore) Pte. Limited (Registration No 198702912C) (“MCSSPL”) at 1800 288 2880. Before executing any attachments delivered with this message you must read the disclaimer below. You are not authorised to forward this email on without our prior expressed permission.
+                                            </p>
+                                            <p style="font-size:14px;font-family:Times New Roman;text-align:justify;">
+                                                Recommendation definitions, Macquarie Research (MQ):
+                                            </p>
+                                            <p style="font-size:14px;font-family:Times New Roman;text-align:justify;">
+                                               Outperform – expected return &gt;+10% <br/>
+                                                Neutral – expected return from -10% to +10% <br/>
+                                                Underperform – expected return &lt;-10%
+                                            </p>
+                                            <p style="font-size:14px;font-family:Times New Roman;text-align:justify;">
+                                                Recommendation: 12 months
+                                            </p>
+                                            <p style="font-size:14px;font-family:Times New Roman;text-align:justify;">
+                                                The Daily Trader is produced by MCSSPL, holder of a capital markets services licence under the Securities and Futures Act, Chapter 289 of Singapore. The information is directed and available for general circulation to residents of Singapore only. Any material provided, including any indicative terms are provided for information purposes only and do not constitute an offer, a solicitation of an offer, or any advice or recommendation to conclude any transaction. The Warrants will not be offered to any US persons.
+                                            </p>
+                                            <p style="font-size:14px;font-family:Times New Roman;text-align:justify;">
+                                                Daily Trader is not a product of Macquarie Research (MQ). Certain parts of this material may be extracted and/or obtained from or based upon information obtained from MQ or other parts of Macquarie. Any views, analyses or opinions highlighted in Daily Trader reflect those of MQ Research or another part of Macquarie. MCSSPL Warrants Team has not provided any independent analyses, views or opinions and makes no recommendations on the basis of any material herein.
+                                            </p>
+                                            <p style="font-size:14px;font-family:Times New Roman;text-align:justify;">
+                                                This document must not be copied, either in whole or in part, or distributed to any other person. If you are not the intended recipient you must not use or disclose the information in any way.
+                                            </p>
+                                            <p style="font-size:14px;font-family:Times New Roman;text-align:justify;">
+                                                Macquarie Bank Limited (ABN 46 008 583 542) (“MBL”) is the Issuer of the Macquarie Warrants (“Warrants”). References to Macquarie include MBL and MCSSPL. Any other parties distributing this product are only doing so as a distributor for MBL. MCSSPL will provide administrative services to MBL. MBL is regulated as an authorised deposit taking institution by the Australian Prudential Regulation Authority. MBL, acting through its Singapore branch is authorised and licensed by the Monetary Authority of Singapore to carry on wholesale banking business in Singapore pursuant to the Banking Act, Chapter 19 of Singapore and therefore is subject to the supervision of the Monetary Authority of Singapore.
+                                            </p>
+                                            <p style="font-size:14px;font-family:Times New Roman;text-align:justify;">
+                                                MCSSPL is not an authorised deposit taking institution for the purposes of the Banking Act 1959 (Commonwealth of Australia), and MCSSPL&#39;s obligations do not represent deposits or other liabilities of MBL. MBL does not guarantee or otherwise provide assurance in respect of the obligations of MCSSPL.
+                                            </p>
+                                            <p style="font-size:14px;font-family:Times New Roman;text-align:justify;">
+                                            MBL may enter into discount, commission or fee arrangements with brokers, distributors and/or any of its affiliates with respect to the primary or secondary market in the Warrants. Warrants can be volatile instruments and may be subject to considerable fluctuations in value. The price of Warrants may fall in value as rapidly as it may rise due to, including but not limited to, variations in the frequency and magnitude of the changes in the price of the underlying share or index, dividends and interest rate, the time remaining to expiry and the creditworthiness of MBL. Therefore Warrants run the risk of expiring worthless resulting in a total loss of your investment.
+                                            </p>
+                                            <p style="font-size:14px;font-family:Times New Roman;text-align:justify;">
+                                                Where past performance is referred to, it is not indicative of future performance. In preparing the information contained herein, Macquarie did not take into account the investment objectives, financial situation and particular needs of the reader. Before making an investment decision on the basis of the information contained herein, you should consult, to the extent necessary, your own independent, competent, legal, financial and other professional advisers, to ensure that any decision you make is suitable for you with regard to your investment needs, objectives and financial circumstances.
+                                            </p>
+                                            <p style="font-size:14px;font-family:Times New Roman;text-align:justify;">
+                                               MBL makes no representation nor can it give any assurance as to the liquidity in the trading of Warrants as MCSSPL, the Designated Market Maker, may be the only person quoting prices in the Warrants. In deciding whether to acquire or continue to hold an investment, you should obtain the base listing document and the relevant supplemental listing document from us and consider its content carefully before making any decision about this financial product. Copies of the listing documents may be obtained from the office of MCSSPL at 9 Straits View #21-07 Marina One West Tower Singapore 018937 and on <a style="color:#FFD400;font-family:Tahoma,Arial;" href="http://www.warrants.com.sg" target="_blank">www.warrants.com.sg</a>.
+                                            </p>
+                                            <p style="font-size:14px;font-family:Times New Roman;text-align:justify;">
+                                                Disclosures with respect to the listed companies, if any, mentioned in this document are available at <a style="color:#FFD400;font-family:Tahoma,Arial;" href="http://www.macquarie.com.au/research/disclosures" target="_blank">www.macquarie.com.au/research/disclosures</a>.
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="padding:0px">&nbsp;</td>
+            </tr>
+        </table>
+        </custom>
+    </body>
+</html>

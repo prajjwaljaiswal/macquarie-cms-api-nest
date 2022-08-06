@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { IsDate, isNumber, IsNumber, IsObject, IsOptional, IsString } from 'class-validator';
+import { isArrayBuffer } from 'util/types';
 
 export class DailySandpDto {
 
@@ -65,5 +66,8 @@ export class createDailySandpDto {
 export class DailySandpImageDto{
     @IsNumber()
     id: number;
+    
+    @IsOptional()
+    image: Buffer;
 }
 

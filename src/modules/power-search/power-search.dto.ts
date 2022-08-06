@@ -17,5 +17,5 @@ export class PowerSearchDTO {
 
   @IsOptional()
   @IsNotEmpty()
-  dsply_name?: string;
+  type?: string;
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { warrants_screener } from '../power-search/warrants_screener.entity';
-import { createDailySandpDto, DailySandpDto } from './daily-sandp.dto';
+import { createDailySandpDto, DailySandpDto, DailySandpImageDto } from './daily-sandp.dto';
 import { DailySandpEntity, DailySandpImageEntity } from './daily-sandp.entitiy';
 
 @Injectable()
@@ -32,6 +32,13 @@ export class DailySandpService {
           .getRawMany();
     }
 
+
+    async getTopPicksById(id){
+        return await this.DailySandpEntity
+        .find({id});
+    }
+
+
     async updateDailySP500(data: DailySandpDto){
         const { id } = data;
         return await this.DailySandpEntity
@@ -57,24 +64,37 @@ export class DailySandpService {
     }
 
     async getImage(id){
-        return await this.DailySandpEntity.find({
-            select: ['id', 'image'],
+        const adbanner = await this.DailySandpEntity.findOne({
+            select: ['image'],
             where: { id: id }
           });
+          if (adbanner?.image) {
+            return Buffer.from(adbanner.image);
+          } else {
+            return Buffer.from(new ArrayBuffer(0));
+          }
     }
 
 
-    async updateImage(data){
-        const { id } = data;
-        return await this.DailySandpEntity
-        .createQueryBuilder()
-        .update(DailySandpEntity)
-        .set({
-            ...data
-        })
-        .where("id = :id", {id})
-        .execute();
+    async updateImage(data: DailySandpImageDto){
+        const { id, image } = data;
+         data.image = data.image ? Buffer.from(data.image) : null;
+        console.log(data.image);
+        try{
+            return await this.DailySandpEntity
+            .createQueryBuilder()
+            .update()
+            .set({
+                image: data.image
+            })
+            .where("id = :id", {id: id})
+            .execute();
+        }catch(err){
+            return {err: err.message}
+        }
+
     }
+
 }
 
 

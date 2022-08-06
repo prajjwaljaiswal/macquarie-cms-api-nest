@@ -1,14 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { IsDate, isNumber, IsNumber, IsObject, IsOptional, IsString } from 'class-validator';
-import { isArrayBuffer } from 'util/types';
 
-export class DailySandpDto {
-
-  @IsNumber()
-  id: number;
+export class AllForeignIndexDto {
 
   @IsNumber()
-  daily_sp500_status: number;
+  dw_tips_status: number;
 
   @IsString()
   publish_date: Date;
@@ -18,43 +14,6 @@ export class DailySandpDto {
 
   @IsString()
   thai_title: string;
-
-  @IsString()
-  en_short_content: string;
-
-  @IsString()
-  thai_short_content: string
-
-  
-  @IsString()
-  en_full_content: string
-
-  @IsString()
-  thai_full_content: string
-}
-
-
-
-export class createDailySandpDto {
-  
-  @IsNumber()
-  daily_sp500_status: number;
-
-  @IsString()
-  publish_date: Date;
-
-  @IsString()
-  en_title: string;
-
-  @IsString()
-  thai_title: string;
-
-  @IsString()
-  en_short_content: string;
-
-  @IsString()
-  thai_short_content: string
-
   
   @IsString()
   en_full_content: string
@@ -66,11 +25,34 @@ export class createDailySandpDto {
   image: Buffer;
 }
 
-export class DailySandpImageDto{
+
+
+export class createAllForeignIndexDto {
+  
+  @IsNumber()
+  dw_tips_status: number;
+
+  @IsString()
+  publish_date: Date;
+
+  @IsString()
+  en_title: string;
+
+  @IsString()
+  thai_title: string;
+  
+  @IsString()
+  en_full_content: string
+
+  @IsString()
+  thai_full_content: string
+
+  @IsOptional()
+  image: Buffer;
+}
+
+export class AllForeignIndexImageDto{
     @IsNumber()
     id: number;
-    
-    @IsOptional()
-    image: Buffer;
 }
 

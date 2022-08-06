@@ -52,6 +52,9 @@ import { DailySandpModule } from './modules/dailysandp/daily-sandp.module';
 import { DailySandpEntity } from './modules/dailysandp/daily-sandp.entitiy';
 import { DailyHsiDwModule } from './modules/daily_hsi_dw/daily_hsi_dw.module';
 import { DailyHsiDwEntity } from './modules/daily_hsi_dw/daily_hsi_dw.entitiy';
+import { MarketComentryModule } from './modules/market-commentary/market-commentary.module';
+import { AllForeignIndexModule } from './modules/all_foreign_index/all_foreign_index.module';
+import { AllForeignIndexEntity } from './modules/all_foreign_index/all_foreign_index.entitiy';
 
 const defaultOptions = {
   type: process.env.DB_TYPE,
@@ -59,7 +62,7 @@ const defaultOptions = {
   port: parseInt(process.env.DB_PORT, 10),
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
-  entities: ['./src/*.entity{.ts,.js}', 'dist/**/*.entity{.ts,.js}', TodaysTopPicksEntity, DailySandpEntity, DailyHsiDwEntity],
+  entities: ['./src/*.entity{.ts,.js}', 'dist/**/*.entity{.ts,.js}', TodaysTopPicksEntity, DailySandpEntity, DailyHsiDwEntity, AllForeignIndexEntity],
   synchronize: false,
 };
 
@@ -104,7 +107,9 @@ const defaultOptions = {
     TodaysTopPicksModule,
     NewsHeighlightsModule,
     DailySandpModule,
-    DailyHsiDwModule
+    MarketComentryModule,
+    DailyHsiDwModule,
+    AllForeignIndexModule
   ],
   controllers: [],
   providers: [],

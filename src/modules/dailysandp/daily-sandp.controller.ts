@@ -20,6 +20,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { Readable } from 'stream';
 import { Response } from 'express';
 import { DailyHsiDwImageDto } from '../daily_hsi_dw/daily_hsi_dw.dto';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('daily-sp-500')
 export class DailySandpController {
@@ -95,5 +96,28 @@ export class DailySandpController {
         }catch(err){
             return { status: "failed", msg: err.message }
         }
+    }
+
+
+
+    @UseGuards(JwtAuthGuard)
+    @Post('/delete/:id')
+    deleteTopPicks(@Param('id', new ParseIntPipe()) id: number) {
+      return this.DailySandpService.deleteDailySP500(id)
+        .then(() =>
+          JSON.stringify({
+            SUCCESS: true,
+          }),
+        )
+        .catch(() => {
+          throw new HttpException(
+            {
+              SUCCESS: false,
+              STATUSCODE: HttpStatus.BAD_REQUEST,
+              MESSAGE: 'Failed to delete',
+            },
+            HttpStatus.BAD_REQUEST,
+          );
+        });
     }
 }

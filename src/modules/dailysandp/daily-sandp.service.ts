@@ -54,11 +54,12 @@ export class DailySandpService {
 
 
     async insertDailySP500(data: createDailySandpDto){
+        let arraybuffer = data.image ? Buffer.from(data.image) : null;
         return await this.DailySandpEntity
         .createQueryBuilder()
         .insert()
         .values({
-          ...data
+          ...data, image: arraybuffer
             })
         .execute();
     }
@@ -94,6 +95,13 @@ export class DailySandpService {
         }
 
     }
+
+    async deleteDailySP500(id: number) {
+        return await this.DailySandpEntity.createQueryBuilder()
+          .delete()
+          .where('id = :id', { id: id })
+          .execute();
+      }
 
 }
 

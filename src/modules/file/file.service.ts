@@ -135,11 +135,11 @@ export class FileService {
 
   async getHomeBannerImage(id: number): Promise<Buffer> {
     const homebanner = await this.HomeBannerRepository.findOne({
-      select: ['image'],
+      select: ['desktop_image'],
       where: { id: id },
     });
-    if (homebanner?.image) {
-      return Buffer.from(homebanner.image);
+    if (homebanner?.desktop_image) {
+      return Buffer.from(homebanner.desktop_image);
     } else {
       return Buffer.from(new ArrayBuffer(0));
     }

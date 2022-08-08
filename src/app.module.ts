@@ -55,6 +55,7 @@ import { DailyHsiDwEntity } from './modules/daily_hsi_dw/daily_hsi_dw.entitiy';
 import { MarketComentryModule } from './modules/market-commentary/market-commentary.module';
 import { AllForeignIndexModule } from './modules/all_foreign_index/all_foreign_index.module';
 import { AllForeignIndexEntity } from './modules/all_foreign_index/all_foreign_index.entitiy';
+import { CautionModule } from './modules/caution-list/caution-list.module';
 
 const defaultOptions = {
   type: process.env.DB_TYPE,
@@ -104,6 +105,7 @@ const defaultOptions = {
     NewsletterModule,
     FileModule,
     FastTrackModule,
+    CautionModule,
     TodaysTopPicksModule,
     NewsHeighlightsModule,
     DailySandpModule,

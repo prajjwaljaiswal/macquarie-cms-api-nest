@@ -1,20 +1,20 @@
 /* eslint-disable prettier/prettier */
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: 'add_home_banner' })
+@Entity({ name: 'topbanner' })
 export class HomeBannerEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  order: number;
+  @Column({ type: 'longblob', default: null })
+  desktop_image: Buffer;
 
   @Column({ type: 'longblob', default: null })
-  image: Buffer;
+  mobile_image: Buffer;
+
+  @Column({ type: 'text', default: null })
+  desktop_link: string;
 
   @Column({ type: 'text' })
-  link: string;
-
-  @Column()
-  last_update_time: Date;
+  mobile_link: string;
 }

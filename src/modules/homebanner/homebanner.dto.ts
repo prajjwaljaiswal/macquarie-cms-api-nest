@@ -2,26 +2,43 @@
 import { IsNumber, IsObject, IsOptional, IsString } from 'class-validator';
 
 export class CreateHomeBannerDto {
-  @IsNumber()
-  order: number;
 
+  @IsNumber()
+  id: number;
+  
   @IsString()
-  link: string;
+  desktop_link: string;
+
+  @IsOptional()
+  @IsString()
+  mobile_link: string;
 
   @IsOptional()
   @IsObject()
-  image: Buffer;
+  desktop_image: Buffer;
+
+  
+  @IsOptional()
+  @IsObject()
+  mobile_image: Buffer;
 }
 
 export class UpdateHomeBannerDto {
-  @IsNumber()
-  order: number;
-
   @IsString()
-  link: string;
+  desktop_link: string;
+
+  @IsOptional()
+  @IsString()
+  mobile_link: string;
 
   @IsOptional()
   @IsObject()
-  image: Buffer;
+  desktop_image: Buffer;
+
+  
+  @IsOptional()
+  @IsObject()
+  mobile_image: Buffer;
+
 
 }

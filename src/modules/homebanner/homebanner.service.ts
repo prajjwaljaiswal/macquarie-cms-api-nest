@@ -17,33 +17,33 @@ export class HomeBannerService {
     //   select: ['id', 'order'],
     //   order: { order: 'ASC' }}))
     return await this.HomeBannerRespository.find({
-      select: ['id', 'order'],
-      order: { order: 'ASC' },
+      order: { id: 'ASC' },
     });
   }
 
   async getHomeBannerById(id: number): Promise<HomeBannerEntity> {
     // console.log("1111");
     return await this.HomeBannerRespository.findOne({
-      select: ['link'],
+      select: ['desktop_link'],
       where: { id: id },
     });
   }
 
   async insertHomeBanner(data: CreateHomeBannerDto): Promise<InsertResult> {
     // eslint-disable-next-line prefer-const
-    let arraybuffer = data.image ? Buffer.from(data.image) : null;
+    let arraybuffer = data.desktop_link ? Buffer.from(data.desktop_link) : null;
     return await this.HomeBannerRespository.createQueryBuilder()
       .insert()
-      .values({ ...data, image: arraybuffer, last_update_time: new Date() })
+      .values({ ...data, desktop_image: arraybuffer })
       .execute();
   }
 
-  async updateHomeBanner(id: number, data: UpdateHomeBannerDto,): Promise<UpdateResult> {
-    data.image == null ? delete data.image : (data.image = Buffer.from(data.image));
+  async updateHomeBanner(id: number, data: UpdateHomeBannerDto,) {
+    const arraybufferDesktop = (data.desktop_image) ? Buffer.from(data.desktop_image) : null;
+    const arraybufferMobile =(data.mobile_image) ? Buffer.from(data.mobile_image) : null;
     return await this.HomeBannerRespository.createQueryBuilder()
       .update()
-      .set({ ...data, last_update_time: new Date() })
+      .set({ ...data, desktop_image: arraybufferDesktop, mobile_image: arraybufferMobile })
       .where(' id = :id', { id: id })
       .execute();
   }

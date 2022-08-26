@@ -11,12 +11,12 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { UpdateIFDto } from './index-future.dto';
 import { IFService } from './index-future.service';
 
-@Controller('if')
+@Controller('index-future')
 export class IFController {
   constructor(private readonly IFService: IFService) {}
 
-  @UseGuards(JwtAuthGuard)
-  @Get('list')
+  // @UseGuards(JwtAuthGuard)
+  @Get('chainlist')
   getIFList() {
     return this.IFService.getIFList();
   }

@@ -56,6 +56,15 @@ import { MarketComentryModule } from './modules/market-commentary/market-comment
 import { AllForeignIndexModule } from './modules/all_foreign_index/all_foreign_index.module';
 import { AllForeignIndexEntity } from './modules/all_foreign_index/all_foreign_index.entitiy';
 import { CautionModule } from './modules/caution-list/caution-list.module';
+import { Dw28updateModule } from './modules/dw28-update/dw28-update.module';
+import { dwInventoryModule } from './modules/dw-inventory/dw-inventory.module';
+import { dailyMarketAnalysisModule } from './modules/daily-market-analysis/daily-market-analysis.module';
+import { DailySet50TipsModule } from './modules/daily-set50-tips/daily-set50-tips.module';
+import { DailySet50TipsEntity } from './modules/daily-set50-tips/daily-set50-tips.entitiy';
+import { HotTopicReviewModule } from './modules/hot-topic-review/hot-topic-review.module';
+import { HotTopicReviewEntity } from './modules/hot-topic-review/hot-topic-review.entitiy';
+import { WatchListModule } from './modules/watchlist/watchlist.module';
+import { WatchListEntitity } from './modules/watchlist/watchlist.entitiy';
 
 const defaultOptions = {
   type: process.env.DB_TYPE,
@@ -63,7 +72,8 @@ const defaultOptions = {
   port: parseInt(process.env.DB_PORT, 10),
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
-  entities: ['./src/*.entity{.ts,.js}', 'dist/**/*.entity{.ts,.js}', TodaysTopPicksEntity, DailySandpEntity, DailyHsiDwEntity, AllForeignIndexEntity],
+  entities: ['./src/*.entity{.ts,.js}', 'dist/**/*.entity{.ts,.js}', TodaysTopPicksEntity, DailySandpEntity, DailyHsiDwEntity, AllForeignIndexEntity, DailySet50TipsEntity, HotTopicReviewEntity, WatchListEntitity
+],
   synchronize: false,
 };
 
@@ -111,7 +121,13 @@ const defaultOptions = {
     DailySandpModule,
     MarketComentryModule,
     DailyHsiDwModule,
-    AllForeignIndexModule
+    AllForeignIndexModule,
+    Dw28updateModule,
+    dwInventoryModule,
+    dailyMarketAnalysisModule,
+    DailySet50TipsModule,
+    HotTopicReviewModule,
+    WatchListModule
   ],
   controllers: [],
   providers: [],

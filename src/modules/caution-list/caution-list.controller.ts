@@ -20,8 +20,8 @@ export class  CautionController {
 
   // @UseGuards(JwtAuthGuard)
   @Get()
-  getAdBannerList() {
-    return this.CautionService.getAdBannerList();
+  async getAdBannerList() {
+    return await this.CautionService.getAdBannerList();
   }
 
   // @UseGuards(JwtAuthGuard)
@@ -50,11 +50,11 @@ export class  CautionController {
 
   // @UseGuards(JwtAuthGuard)
   @Post('/update')
-  updateCaution(
+  async updateCaution(
     
     @Body() body: any,
   ) {
-    return this.CautionService.updateCaution(body)
+    return await this.CautionService.updateCaution(body)
       .then(() => JSON.stringify({ SUCCESS: true }))
       .catch((err) => {
         throw new HttpException(

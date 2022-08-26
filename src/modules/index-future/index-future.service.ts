@@ -16,10 +16,7 @@ export class IFService {
   ) {}
 
   async getIFList(): Promise<IFListEntity[]> {
-    return await this.IFListRepository.find({
-      select: ['ric', 'dsply_name', 'underlying_ticker'],
-      order: { dsply_name: 'ASC' },
-    });
+    return await this.IFListRepository.query("select ric, dsply_name, if(underlying_ticker in('HSI','S&P500','HSTECH','NDX','DJI','0208300'),dsply_name,dsply_nmll) as dsply_nmll, underlying_ticker, EXPIR_DATE from mqwarrantscms.future_chain_th where underlying_ticker in ('SET50','HSI','S&P500','HSTECH','NDX','DJI','0208300')");
   }
 
   async getIFWarrants(): Promise<IFWarrantsEntity[]> {

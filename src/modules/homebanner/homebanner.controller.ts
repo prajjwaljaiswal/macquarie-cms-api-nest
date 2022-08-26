@@ -21,20 +21,20 @@ export class HomeBannerController {
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  getHomeBannerList() {
-    return this.HomeBannerService.getHomeBannerList();
+  async getHomeBannerList() {
+    return await this.HomeBannerService.getHomeBannerList();
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('/:id')
-  getHomeBannerById(@Param('id', new ParseIntPipe()) id: number) {
-    return this.HomeBannerService.getHomeBannerById(id);
+  async getHomeBannerById(@Param('id', new ParseIntPipe()) id: number) {
+    return await this.HomeBannerService.getHomeBannerById(id);
   }
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  createHomeBanner(@Body() body: CreateHomeBannerDto) {
-    return this.HomeBannerService.insertHomeBanner(body)
+  async createHomeBanner(@Body() body: CreateHomeBannerDto) {
+    return await this.HomeBannerService.insertHomeBanner(body)
       .then(() => JSON.stringify({ SUCCESS: true }))
       .catch((error) => {
         console.log(error);
@@ -51,11 +51,11 @@ export class HomeBannerController {
 
   @UseGuards(JwtAuthGuard)
   @Post('/update/:id')
-  updateHomeBanner(
+  async updateHomeBanner(
     @Param('id', new ParseIntPipe()) id: number,
     @Body() body: UpdateHomeBannerDto,
   ) {
-    return this.HomeBannerService.updateHomeBanner(id, body)
+    return await this.HomeBannerService.updateHomeBanner(id, body)
       .then(() => JSON.stringify({ SUCCESS: true }))
       .catch(() => {
         throw new HttpException(
@@ -71,8 +71,8 @@ export class HomeBannerController {
 
   @UseGuards(JwtAuthGuard)
   @Post('/delete/:id')
-  deleteHomeBanner(@Param('id', new ParseIntPipe()) id: number) {
-    return this.HomeBannerService.deleteHomeBanner(id)
+  async deleteHomeBanner(@Param('id', new ParseIntPipe()) id: number) {
+    return await this.HomeBannerService.deleteHomeBanner(id)
       .then(() => JSON.stringify({ SUCCESS: true }))
       .catch(() => {
         throw new HttpException(

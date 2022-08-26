@@ -28,7 +28,7 @@ export class DailySandpService {
            'en_full_content',
            'thai_full_content'
           ])
-          .orderBy('publish_date', 'ASC')
+          .orderBy('publish_date', 'DESC')
           .getRawMany();
     }
 

@@ -13,10 +13,8 @@ export class HomeBannerService {
   ) { }
 
   async getHomeBannerList(): Promise<HomeBannerEntity[]> {
-    // console.log(await this.HomeBannerRespository.find({
-    //   select: ['id', 'order'],
-    //   order: { order: 'ASC' }}))
     return await this.HomeBannerRespository.find({
+      select: ['id', 'desktop_link'],
       order: { id: 'ASC' },
     });
   }

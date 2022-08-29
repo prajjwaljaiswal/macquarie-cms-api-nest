@@ -14,36 +14,35 @@ import {
     UseInterceptors
  } from '@nestjs/common';
 
- import { DailySandpService } from './daily-sandp.service';
-import { createDailySandpDto, DailySandpDto, DailySandpImageDto } from './daily-sandp.dto';
+ import { DailyHsiDwService } from './dailyHsiUpdate.service';
+import { createDailyHsiDwDto, DailyHsiDwDto, DailyHsiDwImageDto } from './dailyHsiUpdate.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Readable } from 'stream';
 import { Response } from 'express';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
-@Controller('daily-sp-500')
-export class DailySandpController {
-    constructor(private readonly DailySandpService: DailySandpService) {}
+@Controller('daily-hsi-dw')
+export class DailyHsiDwController {
+    constructor(private readonly DailyHsiDwService: DailyHsiDwService) {}
 
     @Get()
    async findAll(){
-        return await this.DailySandpService.getTopPicks();
+        return await this.DailyHsiDwService.getTopPicks();
     }
 
     @Get('/:id')
     findById(@Param('id') id: number){
-        return this.DailySandpService.getTopPicksById(id);
+        return this.DailyHsiDwService.getTopPicksById(id);
     }
 
     @Post('/update')
-    async update(@Body() DailySandpDto: DailySandpDto){
+    async update(@Body() DailyHsiDwDto: DailyHsiDwDto){
         try{
-        const affected = await this.DailySandpService.updateDailySP500(DailySandpDto);
+        const affected = await this.DailyHsiDwService.updateDailySP500(DailyHsiDwDto);
 
         if(affected){
             return { SUCCESS: true }
         }
-
         }catch(err){
             return { status: "failed", msg: err.message }
         }
@@ -53,9 +52,9 @@ export class DailySandpController {
 
 
     @Post()
-    async insertDailySP500(@Body() createDailySandpDto: createDailySandpDto){
+    async insertDailySP500(@Body() createDailyHsiDwDto: createDailyHsiDwDto){
         try{
-        const affected = await this.DailySandpService.insertDailySP500(createDailySandpDto);
+        const affected = await this.DailyHsiDwService.insertDailySP500(createDailyHsiDwDto);
 
         if(affected){
                 return { SUCCESS: true }
@@ -70,7 +69,7 @@ export class DailySandpController {
 
     @Get('/Image/:id')
     async getImage(@Param('id') id: number, @Res() res: Response, ){
-        const buffer = await this.DailySandpService.getImage(id);
+        const buffer = await this.DailyHsiDwService.getImage(id);
         const stream = new Readable();
         stream.push(buffer);
         stream.push(null);
@@ -86,10 +85,10 @@ export class DailySandpController {
     @Post('upload/:id')
     // @UseInterceptors(FileInterceptor('file'))
     // @Bind(UploadedFile())
-    async uploadFile(@Param('id') id: number, @Body() DailySandpImageDto: DailySandpImageDto) {
-        const { image } = DailySandpImageDto;
+    async uploadFile(@Param('id') id: number, @Body() DailyHsiDwImageDto: DailyHsiDwImageDto) {
+        const { image } = DailyHsiDwImageDto;
         try{
-            const uploded = await this.DailySandpService.updateImage({id, image});
+            const uploded = await this.DailyHsiDwService.updateImage({id, image});
 
             return { SUCCESS: true }
         }catch(err){
@@ -102,7 +101,7 @@ export class DailySandpController {
     @UseGuards(JwtAuthGuard)
     @Post('/delete/:id')
     deleteTopPicks(@Param('id', new ParseIntPipe()) id: number) {
-      return this.DailySandpService.deleteDailySP500(id)
+      return this.DailyHsiDwService.deleteDailySP500(id)
         .then(() =>
           JSON.stringify({
             SUCCESS: true,

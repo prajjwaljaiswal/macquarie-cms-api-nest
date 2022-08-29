@@ -1,31 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { createDailySandpDto } from '../dailysandp/daily-sandp.dto';
+// import { createActivitiesDto } from './all_foreign_index.dto';
 import { warrants_screener } from '../power-search/warrants_screener.entity';
-import { createDailyHsiDwDto, DailyHsiDwDto } from './daily_hsi_dw.dto';
-import { DailyHsiDwEntity, DailyHsiDwImageEntity } from './daily_hsi_dw.entitiy';
+import { createActivitiesDto, ActivitiesDto } from './activities.dto';
+import { ActivitiesEntity, ActivitiesImageEntity } from './activities.entitiy';
 
 @Injectable()
-export class DailySandpService {
+export class ActivitiesService {
     constructor(
-        @InjectRepository(DailyHsiDwEntity)
-        private readonly DailyHsiDwEntity: Repository<DailyHsiDwEntity>,
+        @InjectRepository(ActivitiesEntity)
+        private readonly ActivitiesEntity: Repository<ActivitiesEntity>,
         @InjectRepository(warrants_screener, process.env.WARRANTS_DB_CONN_NAME)
         private readonly wsRepository: Repository<warrants_screener>,
     ){}
 
    async getTopPicks(){
-        return await this.DailyHsiDwEntity
+        return await this.ActivitiesEntity
         .createQueryBuilder()
         .select([
            'id',
-           'daily_hsi_status',
+           'activities_status',
            'publish_date',
            'en_title',
            'thai_title',
-           'en_short_content',
-           'thai_short_content',
            'en_full_content',
            'thai_full_content'
           ])
@@ -33,13 +31,19 @@ export class DailySandpService {
           .getRawMany();
     }
 
-    async updateDailySP500(data: DailyHsiDwDto){
-        const { id } = data;
-        return await this.DailyHsiDwEntity
+
+    async ActivitiesById(id){
+        return await this.ActivitiesEntity
+        .find({id});
+    }
+
+    async updateDailySP500(data: ActivitiesDto, id){
+        let arraybuffer = data.image ? Buffer.from(data.image) : null;
+        return await this.ActivitiesEntity
         .createQueryBuilder()
-        .update(DailyHsiDwEntity)
+        .update(ActivitiesEntity)
         .set({
-            ...data
+            ...data, image: arraybuffer
         })
         .where("id = :id", { id })
         .execute();
@@ -47,18 +51,19 @@ export class DailySandpService {
 
 
 
-    async insert(data: createDailyHsiDwDto){
-        return await this.DailyHsiDwEntity
+    async insert(data: createActivitiesDto){
+        let arraybuffer = data.image ? Buffer.from(data.image) : null;
+        return await this.ActivitiesEntity
         .createQueryBuilder()
         .insert()
         .values({
-          ...data
+          ...data, image: arraybuffer
             })
         .execute();
     }
 
     async getImage(id){
-        return await this.DailyHsiDwEntity.find({
+        return await this.ActivitiesEntity.find({
             select: ['id', 'image'],
             where: { id: id }
           });
@@ -67,15 +72,22 @@ export class DailySandpService {
 
     async updateImage(data){
         const { id } = data;
-        return await this.DailyHsiDwEntity
+        return await this.ActivitiesEntity
         .createQueryBuilder()
-        .update(DailyHsiDwEntity)
+        .update(ActivitiesEntity)
         .set({
             ...data
         })
         .where("id = :id", {id})
         .execute();
     }
+
+    async deleteActivities(id: number) {
+        return await this.ActivitiesEntity.createQueryBuilder()
+          .delete()
+          .where('id = :id', { id: id })
+          .execute();
+      }
 }
 
 

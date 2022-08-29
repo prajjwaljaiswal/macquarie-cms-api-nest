@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
-import { DailySandpController } from './daily_hsi_dw.controller';
+import { DailyHsiDwController } from './dailyHsiUpdate.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DailyHsiDwEntity } from './daily_hsi_dw.entitiy';
-import { DailySandpService } from './daily_hsi_dw.service';
+import { DailyHsiDwEntity } from './dailyHsiUpdate.entitiy';
+import { DailyHsiDwService } from './dailyHsiUpdate.service';
 import { warrants_screener } from '../power-search/warrants_screener.entity';
 
 @Module({
-  controllers: [DailySandpController],
-  providers: [DailySandpService],
+  controllers: [DailyHsiDwController],
+  providers: [DailyHsiDwService],
   imports: [TypeOrmModule.forFeature([DailyHsiDwEntity]),
   TypeOrmModule.forFeature(
     [warrants_screener],

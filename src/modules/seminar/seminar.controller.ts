@@ -31,8 +31,12 @@ export class SeminarController {
 
   @UseGuards(JwtAuthGuard)
   @Get('/:id')
-  getSeminarById(@Param('id', new ParseIntPipe()) id: number) {
-    return this.SeminarService.getSeminarById(id);
+  async getSeminarById(@Param('id', new ParseIntPipe()) id: number) {
+    try{
+      return await this.SeminarService.getSeminarById(id);
+    }catch(err){
+        return err.message;
+    }
   }
 
   @UseGuards(JwtAuthGuard)
@@ -49,7 +53,7 @@ export class SeminarController {
         throw new HttpException(
           {
             SUCCESS: false,
-            MESSAGE: 'Failed to Save Seminar',
+            MESSAGE: err.message,
             STATUSCODE: HttpStatus.BAD_REQUEST,
           },
           HttpStatus.BAD_REQUEST,
@@ -69,11 +73,11 @@ export class SeminarController {
           SUCCESS: true,
         }),
       )
-      .catch(() => {
+      .catch((err) => {
         throw new HttpException(
           {
             SUCCESS: false,
-            MESSAGE: 'Failed to update Seminar',
+            MESSAGE: err.message,
             STATUSCODE: HttpStatus.BAD_REQUEST,
           },
           HttpStatus.BAD_REQUEST,

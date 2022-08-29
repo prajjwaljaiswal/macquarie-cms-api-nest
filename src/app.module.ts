@@ -50,8 +50,6 @@ import { TodaysTopPicksEntity } from './modules/todaysTopPicks/todays-top-picks.
 import { NewsHeighlightsModule } from './modules/news-highlights/news-highlights.module';
 import { DailySandpModule } from './modules/dailysandp/daily-sandp.module';
 import { DailySandpEntity } from './modules/dailysandp/daily-sandp.entitiy';
-import { DailyHsiDwModule } from './modules/daily_hsi_dw/daily_hsi_dw.module';
-import { DailyHsiDwEntity } from './modules/daily_hsi_dw/daily_hsi_dw.entitiy';
 import { MarketComentryModule } from './modules/market-commentary/market-commentary.module';
 import { AllForeignIndexModule } from './modules/all_foreign_index/all_foreign_index.module';
 import { AllForeignIndexEntity } from './modules/all_foreign_index/all_foreign_index.entitiy';
@@ -65,6 +63,14 @@ import { HotTopicReviewModule } from './modules/hot-topic-review/hot-topic-revie
 import { HotTopicReviewEntity } from './modules/hot-topic-review/hot-topic-review.entitiy';
 import { WatchListModule } from './modules/watchlist/watchlist.module';
 import { WatchListEntitity } from './modules/watchlist/watchlist.entitiy';
+import { DailySet50AecsModule } from './modules/dailyset50aecs/dailyset50aecs.module';
+import { DailySet50AecsEntity } from './modules/dailyset50aecs/dailyset50aecs.entitiy';
+import { DailyHsiDwModule } from './modules/dailyHsiUpdate/dailyHsiUpdate.module';
+import { DailyHsiDwEntity } from './modules/dailyHsiUpdate/dailyHsiUpdate.entitiy';
+import { DailySingleStockModule } from './modules/dailySingleStock/dailySingleStock.module';
+import { DailySingleStockEntity } from './modules/dailySingleStock/dailySingleStock.entitiy';
+import { ActivitiesModule } from './modules/activities/activities.module';
+import { ActivitiesEntity } from './modules/activities/activities.entitiy';
 
 const defaultOptions = {
   type: process.env.DB_TYPE,
@@ -72,7 +78,8 @@ const defaultOptions = {
   port: parseInt(process.env.DB_PORT, 10),
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
-  entities: ['./src/*.entity{.ts,.js}', 'dist/**/*.entity{.ts,.js}', TodaysTopPicksEntity, DailySandpEntity, DailyHsiDwEntity, AllForeignIndexEntity, DailySet50TipsEntity, HotTopicReviewEntity, WatchListEntitity
+  entities: ['./src/*.entity{.ts,.js}', 'dist/**/*.entity{.ts,.js}', TodaysTopPicksEntity, DailySandpEntity, AllForeignIndexEntity, DailySet50TipsEntity, HotTopicReviewEntity, WatchListEntitity, DailySet50AecsEntity, DailyHsiDwEntity, DailySingleStockEntity,
+  ActivitiesEntity
 ],
   synchronize: false,
 };
@@ -120,14 +127,17 @@ const defaultOptions = {
     NewsHeighlightsModule,
     DailySandpModule,
     MarketComentryModule,
-    DailyHsiDwModule,
     AllForeignIndexModule,
     Dw28updateModule,
     dwInventoryModule,
     dailyMarketAnalysisModule,
     DailySet50TipsModule,
     HotTopicReviewModule,
-    WatchListModule
+    WatchListModule,
+    DailySet50AecsModule,
+    DailyHsiDwModule,
+    DailySingleStockModule,
+    ActivitiesModule
   ],
   controllers: [],
   providers: [],

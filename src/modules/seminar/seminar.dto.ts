@@ -24,9 +24,6 @@ export class CreateSeminardto {
   @IsString()
   th_title: string;
 
-  @IsString()
-  en_partner: string;
-
   @IsOptional()
   @IsString()
   th_partner: string;
@@ -56,11 +53,6 @@ export class CreateSeminardto {
   @IsString()
   registration_link: string;
 
-  @IsString()
-  webinar: string;
-
-  @IsString()
-  recorded: string;
 }
 
 export class UpdateSeminardto {
@@ -87,9 +79,6 @@ export class UpdateSeminardto {
   @IsString()
   th_title: string;
 
-  @IsString()
-  en_partner: string;
-
   @IsOptional()
   @IsString()
   th_partner: string;
@@ -118,10 +107,5 @@ export class UpdateSeminardto {
 
   @IsString()
   registration_link: string;
-
-  @IsString()
-  webinar: string;
-
-  @IsString()
-  recorded: string;
+  
 }

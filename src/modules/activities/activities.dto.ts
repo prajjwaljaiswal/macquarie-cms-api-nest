@@ -1,13 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { IsDate, isNumber, IsNumber, IsObject, IsOptional, IsString } from 'class-validator';
 
-export class DailyHsiDwDto {
+export class ActivitiesDto {
 
   @IsNumber()
-  id: number;
-
-  @IsNumber()
-  daily_hsi_status: number;
+  activities_status: number;
 
   @IsString()
   publish_date: Date;
@@ -17,27 +14,23 @@ export class DailyHsiDwDto {
 
   @IsString()
   thai_title: string;
-
-  @IsString()
-  en_short_content: string;
-
-  @IsString()
-  thai_short_content: string
-
   
   @IsString()
   en_full_content: string
 
   @IsString()
   thai_full_content: string
+
+  @IsOptional()
+  image: Buffer;
 }
 
 
 
-export class createDailyHsiDwDto {
+export class createActivitiesDto {
   
   @IsNumber()
-  daily_hsi_status: number;
+  activities_status: number;
 
   @IsString()
   publish_date: Date;
@@ -47,22 +40,18 @@ export class createDailyHsiDwDto {
 
   @IsString()
   thai_title: string;
-
-  @IsString()
-  en_short_content: string;
-
-  @IsString()
-  thai_short_content: string
-
   
   @IsString()
   en_full_content: string
 
   @IsString()
   thai_full_content: string
+
+  @IsOptional()
+  image: Buffer;
 }
 
-export class DailyHsiDwImageDto{
+export class ActivitiesImageDto{
     @IsNumber()
     id: number;
 }

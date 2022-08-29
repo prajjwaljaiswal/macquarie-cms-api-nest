@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: 'seminar' })
+@Entity({database: process.env.MQ_DB, name: 'seminar_new' })
 export class SeminarEntity {
   @PrimaryGeneratedColumn()
   id: number;

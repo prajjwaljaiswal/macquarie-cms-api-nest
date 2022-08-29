@@ -25,7 +25,6 @@ export class IFService {
         'wrnt_ric',
         'future_ric',
         'future_dsply_name',
-        'dsply_nmll',
         'ticker',
       ],
       order: { wrnt_ric: 'ASC' },

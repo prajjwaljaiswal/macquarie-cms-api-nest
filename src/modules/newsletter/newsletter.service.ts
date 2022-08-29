@@ -22,21 +22,8 @@ export class NewsletterService {
   ) { }
 
   async getNewsletter(): Promise<NewsletterEntity> {
-    return await this.NewsletterRepository.createQueryBuilder('n')
-      .innerJoinAndSelect(NewsletterTipsEntity, 'nt', 'n.img_id = nt.id')
-      .innerJoinAndSelect(NewsletterNewsEntity, 'nn', 'n.news_img_id = nn.id')
-      .select([
-        'n.title as title',
-        'n.content as content',
-        'n.status as status',
-        'n.img_id as img_id',
-        'nt.link as tips_link',
-        'n.img_link as img_link',
-        'n.option as option',
-        'n.news_img_id as news_img_id',
-        'nn.link as news_link',
-      ])
-      .getRawOne();
+      const data = await this.NewsletterRepository.query("SELECT status, title, content, img_id, img_link, CONVERT_TZ(last_update, '+00:00', '+07:00') as last_update from mqwarrantscms.mq_email_info WHERE id = 1");
+      return data[0];
   }
 
   async getNewsletterTips(): Promise<NewsletterTipsEntity[]> {
@@ -44,7 +31,7 @@ export class NewsletterService {
   }
 
   async getNewsletterNews(): Promise<NewsletterNewsEntity[]> {
-    return await this.NewsletterNewsRepository.find({ select: ['id', 'link'] });
+    return await this.NewsletterNewsRepository.find({ select: ['id', 'img_link'] });
   }
 
   async updateSendStatus(): Promise<UpdateResult> {
@@ -77,7 +64,7 @@ export class NewsletterService {
     if (data.newsfile) {
       await this.NewsletterNewsRepository.createQueryBuilder()
         .insert()
-        .values({ image: Buffer.from(data.newsfile), link: data.news_img_link })
+        .values({ image: Buffer.from(data.newsfile), img_link: data.img_link })
         .execute();
 
       var newsletterTipsRepository = await this.NewsletterNewsRepository.createQueryBuilder()
@@ -102,21 +89,19 @@ export class NewsletterService {
     if (!data.newsfile) {
       await this.NewsletterNewsRepository.createQueryBuilder()
         .update()
-        .set({ link: data.news_img_link })
+        .set({ img_link: data.img_link })
         .where('id = :id', { id: data.news_img_id })
         .execute();
     }
 
 
-    var content = await this.updateNewsletterContent(data.option, data.img_id, data.img_link, data.news_img_id, data.news_img_link);
+    var content = await this.updateNewsletterContent(data.option, data.img_id, data.img_link);
     return await this.NewsletterRepository.createQueryBuilder()
       .update()
       .set({
         title: data.title,
         content: content,
         img_id: data.img_id,
-        option: data.option,
-        news_img_id: data.news_img_id,
         last_update: new Date(),
       })
       .where('id = 1')
@@ -137,7 +122,7 @@ export class NewsletterService {
       .execute();
   }
 
-  async updateNewsletterContent(option: string, img_id: number, img_link: string, news_img_id: number, news_img_link: string): Promise<string> {
+  async updateNewsletterContent(option: string, img_id: number, img_link: string): Promise<string> {
     var propertiesReader = require('properties-reader');
     var properties = propertiesReader('./src/newsletter.properties');
     var website_link = properties.get('website_link');
@@ -160,8 +145,8 @@ export class NewsletterService {
       result += contents[3].replace("{section-content}", mmbdata.en_short_content)
         .replace("{Read_more}", "marketnews/highlight/todayhighlight/" + mmbdata.id);
     } else {
-      result += contents[4].replace("{news_link}", news_img_link)
-        .replace("{news_src}", "file/image/news/" + news_img_id);
+      result += contents[4].replace("{news_link}", img_link)
+        .replace("{news_src}", "file/image/news/" + img_id);
     }
     result += contents[5].replace("{img_link}", img_link)
       .replace("{img_src}", "file/image/tips/" + img_id);

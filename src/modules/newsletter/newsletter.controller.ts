@@ -19,37 +19,48 @@ export class NewsletterController {
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  getNewsletter() {
-    return this.NewsletterService.getNewsletter();
+  async getNewsletter() {
+    try{
+      return await this.NewsletterService.getNewsletter();
+    }catch(err){
+      return err.message;
+    }
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('/tips')
-  getNewsletterTips() {
-    return this.NewsletterService.getNewsletterTips();
+  async getNewsletterTips() {
+    try{
+    return await this.NewsletterService.getNewsletterTips();
+    }catch(err){
+      return err.message;
+    }
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('/news')
-  getNewletterNews() {
-    return this.NewsletterService.getNewsletterNews();
+  async getNewletterNews() {
+    try{
+    return await this.NewsletterService.getNewsletterNews();
+  }catch(err){
+    return err.message;
+  }
   }
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  updateNewsletter(@Body() body: UpdateNewsletterdto) {
-    return this.NewsletterService.updateNewsletter(body)
+  async updateNewsletter(@Body() body: UpdateNewsletterdto) {
+    return await this.NewsletterService.updateNewsletter(body)
       .then(() =>
         JSON.stringify({
           SUCCESS: true,
         }),
       )
       .catch((e) => {
-        console.log(e);
         throw new HttpException(
           {
             SUCCESS: false,
-            MESSAGE: 'Failed to update',
+            MESSAGE: e.message,
             STATUSCODE: HttpStatus.BAD_REQUEST,
           },
           HttpStatus.BAD_REQUEST,

@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: 'newsletter_tips' })
+@Entity({database: process.env.MQ_DB, name: 'mq_email_info' })
 export class NewsletterNewsEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -9,5 +9,5 @@ export class NewsletterNewsEntity {
   image: Buffer;
 
   @Column({ type: 'text' })
-  link: string;
+  img_link: string;
 }

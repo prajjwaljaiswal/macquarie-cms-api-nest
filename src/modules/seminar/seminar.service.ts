@@ -44,8 +44,6 @@ export class SeminarService {
         'en_introduce_content',
         'en_partner',
         'en_venue',
-        'webinar',
-        'recorded',
         'registration_link',
       ],
       where: { id: id },
